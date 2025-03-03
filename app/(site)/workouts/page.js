@@ -17,9 +17,9 @@ export default async function Page({ searchParams }) {
       <main className="mx-64 w-full p-6">
         <h1 className="text-3xl font-semibold mb-8">Workouts</h1>
 
-        {/* <Suspense fallback={<Spinner />}> */}
-        <WorkoutsContent filter={filter} />
-        {/* </Suspense> */}
+        <Suspense fallback={<Spinner />}>
+          <WorkoutsContent filter={filter} />
+        </Suspense>
 
         {/* {!workouts.length && (
           <InfoMessageBox
