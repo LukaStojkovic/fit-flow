@@ -3,6 +3,7 @@ import getCurrentUser from "../actions/getCurrentUser";
 import WelcomeMessageBox from "./_components/WelcomeMessageBox";
 import DashboardCards from "./_components/DashboardCards";
 import DashboardCharts from "./_components/DashboardCharts";
+import Spinner from "./_components/Spinner";
 
 export const metadata = {
   title: "Dashboard - Fit Flow",
@@ -10,11 +11,10 @@ export const metadata = {
 };
 
 export default async function Dashboard() {
-  // Fetching user data
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
-    return <div>User not found</div>;
+    return <Spinner />;
   }
 
   const { weight, height, name, email } = currentUser;

@@ -114,6 +114,9 @@ export const calculateAverageDuration = (userWorkouts) => {
 
 export async function getUserStats() {
   const currentUser = await getCurrentUser();
+
+  if (!currentUser) return 0;
+
   const userWorkouts = await getUserWorkouts(currentUser._id);
 
   const workoutData = await calculateWorkoutActivity();
