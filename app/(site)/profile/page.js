@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import ProfileContent from "../_components/ProfileContent";
-import Spinner from "../_components/Spinner";
 import SkeletonUserForm from "../_components/SkeletonUserForm";
 
 export const metadata = {
