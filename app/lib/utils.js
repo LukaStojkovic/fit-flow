@@ -115,22 +115,22 @@ export const calculateAverageDuration = (userWorkouts) => {
 export async function getUserStats() {
   const currentUser = await getCurrentUser();
 
-  // if (!currentUser) {
-  //   return {
-  //     totalWorkouts: 0,
-  //     avgWorkoutDuration: 0,
-  //     weight: null,
-  //     height: null,
-  //     totalCaloriesBurnt: 0,
-  //     weightData: [],
-  //     workoutData: [],
-  //     caloriesBurntPerMonth: [],
-  //     consistencyData: [],
-  //     totalAvgHeartRate: 0,
-  //     completedWorkouts: 0,
-  //     maxWeightLifted: 0,
-  //   };
-  // }
+  if (!currentUser) {
+    return {
+      totalWorkouts: 0,
+      avgWorkoutDuration: 0,
+      weight: null,
+      height: null,
+      totalCaloriesBurnt: 0,
+      weightData: [],
+      workoutData: [],
+      caloriesBurntPerMonth: [],
+      consistencyData: [],
+      totalAvgHeartRate: 0,
+      completedWorkouts: 0,
+      maxWeightLifted: 0,
+    };
+  }
 
   const userWorkouts = await getUserWorkouts(currentUser?._id);
 
