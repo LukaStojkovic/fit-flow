@@ -1,4 +1,5 @@
 import Avatar from "./Avatar";
+import Spinner from "./Spinner";
 import UserForm from "./UserForm";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
