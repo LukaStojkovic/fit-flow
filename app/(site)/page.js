@@ -1,12 +1,8 @@
-import WelcomeMessageBox from "./_components/WelcomeMessageBox";
-
 import { getUserStats } from "../lib/utils";
-
 import getCurrentUser from "../actions/getCurrentUser";
-import { Suspense } from "react";
-import Spinner from "./_components/Spinner";
-import DashboardCharts from "./_components/DashboardCharts";
+import WelcomeMessageBox from "./_components/WelcomeMessageBox";
 import DashboardCards from "./_components/DashboardCards";
+import DashboardCharts from "./_components/DashboardCharts";
 
 export const metadata = {
   title: "Dashboard - Fit Flow",
@@ -14,24 +10,29 @@ export const metadata = {
 };
 
 export default async function Dashboard() {
-  const { weight } = await getUserStats();
-  const { name, email } = await getCurrentUser();
+  // Fetching user data
+  const currentUser = await getCurrentUser();
+
+  if (!currentUser) {
+    return <div>User not found</div>;
+  }
+
+  const { weight, height, name, email } = currentUser;
+
+  const userStats = await getUserStats();
 
   const userData = {
     weight,
-    email,
+    height,
     name,
+    email,
   };
 
   return (
     <div className="p-6 space-y-6">
       <WelcomeMessageBox userData={userData} />
-
       <DashboardCards />
-
-      {/* <Suspense fallback={<Spinner />}> */}
-      <DashboardCharts />
-      {/* </Suspense> */}
+      <DashboardCharts userStats={userStats} />
     </div>
   );
 }
