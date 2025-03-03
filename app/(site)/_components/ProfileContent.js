@@ -5,6 +5,8 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 export default async function ProfileContent() {
   const currentUser = await getCurrentUser();
 
+  if (!currentUser) return <Spinner />;
+
   return (
     <>
       <div className="flex items-center gap-4 mb-6">
