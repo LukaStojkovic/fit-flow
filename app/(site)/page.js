@@ -1,8 +1,8 @@
-import { Dumbbell, Ruler, Weight, Flame } from "lucide-react";
+export const dynamic = "force-dynamic";
+
 import WelcomeMessageBox from "./_components/WelcomeMessageBox";
 
-import { calculateWorkoutActivity, getUserStats } from "../lib/utils";
-import Link from "next/link";
+import { getUserStats } from "../lib/utils";
 import getCurrentUser from "../actions/getCurrentUser";
 import { Suspense } from "react";
 import Spinner from "./_components/Spinner";
