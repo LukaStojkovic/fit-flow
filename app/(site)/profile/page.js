@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Suspense } from "react";
 import ProfileContent from "../_components/ProfileContent";
 import SkeletonUserForm from "../_components/SkeletonUserForm";
