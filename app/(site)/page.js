@@ -1,8 +1,7 @@
-export const dynamic = "force-dynamic";
-
 import WelcomeMessageBox from "./_components/WelcomeMessageBox";
 
 import { getUserStats } from "../lib/utils";
+
 import getCurrentUser from "../actions/getCurrentUser";
 import { Suspense } from "react";
 import Spinner from "./_components/Spinner";
@@ -30,9 +29,9 @@ export default async function Dashboard() {
 
       <DashboardCards />
 
-      <Suspense fallback={<Spinner />}>
-        <DashboardCharts />
-      </Suspense>
+      {/* <Suspense fallback={<Spinner />}> */}
+      <DashboardCharts />
+      {/* </Suspense> */}
     </div>
   );
 }

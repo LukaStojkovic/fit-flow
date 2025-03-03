@@ -16,9 +16,9 @@ export default function Stats() {
       <p className="text-gray-600 dark:text-gray-400">
         Track your progress and achievements here.
       </p>
-      <Suspense fallback={<SkeletonStatsPage />}>
-        <StatsContent />
-      </Suspense>
+      {/* <Suspense fallback={<SkeletonStatsPage />}> */}
+      <StatsContent />
+      {/* </Suspense> */}
     </div>
   );
 }
