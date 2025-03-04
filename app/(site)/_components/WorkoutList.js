@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { startTransition, useOptimistic, useState } from "react";
 import WorkoutItem from "./WorkoutItem";
 import Modal from "./Modal";
 import { Plus } from "lucide-react";
@@ -8,9 +8,11 @@ import CreateWorkoutForm from "./CreateWorkoutForm";
 import Filters from "./Filters";
 import InfoMessageBox from "./InfoMessageBox";
 import Link from "next/link";
+import { deleteWorkout } from "@/app/lib/actions";
 
 export default function WorkoutList({ workouts, currentUser, filter }) {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [optimisticWorkouts, setOptimisticWorkouts] = useOptimistic(workouts);
 
   let displayWorkouts;
 
@@ -30,6 +32,21 @@ export default function WorkoutList({ workouts, currentUser, filter }) {
 
   function handleOpenModal() {
     setIsOpenModal((prev) => !prev);
+  }
+
+  async function handleDeleteWorkout(workoutId) {
+    startTransition(() => {
+      setOptimisticWorkouts((prevWorkouts) =>
+        prevWorkouts.filter((workout) => workout._id !== workoutId)
+      );
+    });
+
+    try {
+      await deleteWorkout(workoutId);
+    } catch (err) {
+      console.error(err);
+      setOptimisticWorkouts(workouts);
+    }
   }
 
   return (
@@ -77,7 +94,11 @@ export default function WorkoutList({ workouts, currentUser, filter }) {
           </thead>
           <tbody className="cursor-pointer">
             {displayWorkouts?.map((workout) => (
-              <WorkoutItem workout={workout} key={workout._id} />
+              <WorkoutItem
+                workout={workout}
+                key={workout._id}
+                onDelete={() => handleDeleteWorkout(workout._id)}
+              />
             ))}
           </tbody>
         </table>

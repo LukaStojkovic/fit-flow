@@ -3,7 +3,7 @@ import { deleteWorkout } from "@/app/lib/actions";
 import { useRouter } from "next/navigation";
 import { workoutTypeIcons } from "@/app/constants/constants";
 
-export default function WorkoutItem({ workout }) {
+export default function WorkoutItem({ workout, onDelete }) {
   const router = useRouter();
 
   const formattedDate = new Intl.DateTimeFormat("en-GB", {
@@ -42,17 +42,21 @@ export default function WorkoutItem({ workout }) {
           <Eye size={18} />
         </button>
 
-        <form
+        {/* <form
           action={deleteWorkout.bind(null, workout._id)}
           onClick={(e) => e.stopPropagation()}
+        > */}
+        <button
+          type="button"
+          className="text-red-600 dark:text-red-500 hover:text-red-700 dark:hover:text-red-400"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete();
+          }}
         >
-          <button
-            type="submit"
-            className="text-red-600 dark:text-red-500 hover:text-red-700 dark:hover:text-red-400"
-          >
-            <Trash2 size={18} />
-          </button>
-        </form>
+          <Trash2 size={18} />
+        </button>
+        {/* </form> */}
       </td>
     </tr>
   );
