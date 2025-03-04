@@ -16,17 +16,17 @@ export default function WorkoutList({ workouts, currentUser, filter }) {
 
   let displayWorkouts;
 
-  if (filter === "all") displayWorkouts = workouts;
+  if (filter === "all") displayWorkouts = optimisticWorkouts;
   if (filter === "push")
-    displayWorkouts = workouts.filter(
+    displayWorkouts = optimisticWorkouts.filter(
       (workout) => workout.workoutType === "push-day"
     );
   if (filter === "pull")
-    displayWorkouts = workouts.filter(
+    displayWorkouts = optimisticWorkouts.filter(
       (workout) => workout.workoutType === "pull-day"
     );
   if (filter === "legs")
-    displayWorkouts = workouts.filter(
+    displayWorkouts = optimisticWorkouts.filter(
       (workout) => workout.workoutType === "leg-day"
     );
 
