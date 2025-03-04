@@ -247,7 +247,7 @@ export async function calculateWorkoutConsistency(periodDays = 30) {
 
   const consistency = (workoutDays.size / periodDays) * 100;
 
-  return [{ name: "Consistency", value: consistency.toFixed(2) }];
+  return [{ name: "Consistency", value: Number(consistency.toFixed(2)) }];
 }
 
 export async function calculateCompletedWorkouts(periodDays = 30) {
