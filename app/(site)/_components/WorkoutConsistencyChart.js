@@ -14,6 +14,7 @@ export default function WorkoutConsistencyChart({
 }) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-800">
       <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">

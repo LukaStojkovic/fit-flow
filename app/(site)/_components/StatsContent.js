@@ -52,7 +52,7 @@ export default async function StatsContent() {
           {
             icon: <TrendingUp size={28} className="text-purple-500" />,
             label: "Workout Consistency",
-            value: `${consistencyData[0].value}%`,
+            value: `${consistencyData.length ? consistencyData[0].value : "N/A"}%`,
           },
           {
             icon: <HeartPulse size={28} className="text-red-500" />,
