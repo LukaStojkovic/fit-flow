@@ -51,13 +51,13 @@ export default function WorkoutList({ workouts, currentUser, filter }) {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-4 pr-4">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-4 pr-4">
         <Filters />
         {currentUser.weight ? (
           <button
             className="flex items-center space-x-2 px-4 py-2 bg-gray-900 text-white 
                      rounded-full text-sm hover:bg-gray-800 transition-all 
-                     dark:bg-gray-700 dark:hover:bg-gray-600"
+                     dark:bg-gray-700 dark:hover:bg-gray-600 mt-4 sm:mt-0"
             onClick={handleOpenModal}
           >
             <Plus size={16} />
@@ -67,7 +67,7 @@ export default function WorkoutList({ workouts, currentUser, filter }) {
           <Link
             className="flex items-center space-x-2 px-4 py-2 bg-gray-900 text-white 
           rounded-full text-sm hover:bg-gray-800 transition-all 
-          dark:bg-gray-700 dark:hover:bg-gray-600"
+          dark:bg-gray-700 dark:hover:bg-gray-600 mt-4 sm:mt-0"
             href="/profile"
           >
             <Plus size={16} />

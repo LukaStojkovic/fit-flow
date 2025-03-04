@@ -1,6 +1,5 @@
 import { getUserStats } from "@/app/lib/utils";
 import { Dumbbell, Ruler, Weight, Flame } from "lucide-react";
-
 import Link from "next/link";
 
 export default async function DashboardCards() {
@@ -8,7 +7,7 @@ export default async function DashboardCards() {
     await getUserStats();
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 p-4 sm:p-6">
       {[
         {
           icon: <Flame size={28} className="text-orange-500" />,

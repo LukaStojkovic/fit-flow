@@ -14,8 +14,10 @@ export default async function Page({ searchParams }) {
 
   return (
     <div className="flex h-full">
-      <main className="mx-64 w-full p-6">
-        <h1 className="text-3xl font-semibold mb-8">Workouts</h1>
+      <main className="mx-4 sm:mx-8 md:mx-16 lg:mx-64 w-full p-4 sm:p-6 md:p-8">
+        <h1 className="text-2xl sm:text-3xl font-semibold mb-6 sm:mb-8">
+          Workouts
+        </h1>
 
         <Suspense fallback={<Spinner />}>
           <WorkoutsContent filter={filter} />
@@ -24,7 +26,7 @@ export default async function Page({ searchParams }) {
         {/* {!workouts.length && (
           <InfoMessageBox
             label="No workouts found."
-            message="Start your fitness journey by creating your first workout!"
+            message="Start your fitness journey by creating your first workout!" 
           />
         )} */}
       </main>

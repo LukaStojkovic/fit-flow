@@ -30,8 +30,12 @@ export default function SiteLayout({ children }) {
     >
       <Providers>
         <ToasterContext />
+
         <Sidebar />
-        <main className="ml-64 w-full p-4 overflow-auto">{children}</main>
+
+        <main className="lg:ml-64 ml-0 w-full p-4 overflow-auto">
+          {children}
+        </main>
       </Providers>
     </div>
   );

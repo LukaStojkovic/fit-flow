@@ -57,7 +57,7 @@ export default function Page() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="w-96 p-6 bg-white dark:bg-gray-800 shadow-md rounded-2xl border border-gray-200 dark:border-gray-700">
+      <div className="w-full max-w-sm p-6 bg-white dark:bg-gray-800 shadow-md rounded-2xl border border-gray-200 dark:border-gray-700">
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-white text-center mb-6">
           Sign in to Fit Flow
         </h2>
@@ -94,7 +94,7 @@ export default function Page() {
             </span>
             <div className="flex-1 border-t border-gray-300 dark:border-gray-600"></div>
           </div>
-          <div className="mt-6 flex gap-2">
+          <div className="mt-6 flex gap-4 justify-center">
             <AuthSocialButton
               icon={BsGithub}
               onClick={() => socialAction("github")}
