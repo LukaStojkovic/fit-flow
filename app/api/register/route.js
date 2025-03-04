@@ -2,10 +2,9 @@ import User from "@/app/lib/models/User";
 import dbConnect from "@/app/lib/mongo";
 import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
-import WelcomeEmail from "@/app/_components/email-template";
+import sgMail from "@sendgrid/mail";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export async function POST(req) {
   try {
@@ -31,16 +30,25 @@ export async function POST(req) {
       gender: null,
     });
 
-    const { data } = await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: "lukastojkovic006.ls@gmail.com", // OVO MORA DA SE PROMENI NA DEPLOYMENT
+    const msg = {
+      to: email,
+      from: "pictoramedia@gmail.com",
       subject: "Welcome to Fit Flow!",
-      react: WelcomeEmail({ firstName: name }),
-    });
+      templateId: "d-212a0ee35af3408d819ccf8b2dad9196",
+      dynamicTemplateData: {
+        firstName: name,
+      },
+    };
+
+    try {
+      await sgMail.send(msg);
+      console.log("Email sent successfully");
+    } catch (error) {
+      console.error("Error sending email", error);
+    }
 
     return NextResponse.json({
       user,
-      emailStatus: data ? "Email sent successfully" : "Email failed to send",
     });
   } catch (err) {
     console.log(err, "REGISTRATION_ERROR");
