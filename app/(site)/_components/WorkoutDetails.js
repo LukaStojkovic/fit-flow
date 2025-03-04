@@ -35,7 +35,7 @@ export default function WorkoutDetails({ workout, onDelete }) {
             <input
               value={formData.name}
               onChange={handleChange}
-              className="border p-1 rounded dark:bg-gray-700 dark:text-gray-300"
+              className="border p-1 rounded dark:bg-gray-700 dark:text-gray-300 w-full max-w-xs"
               name="name"
               type="text"
             />
@@ -59,6 +59,7 @@ export default function WorkoutDetails({ workout, onDelete }) {
           </form>
         </div>
       </div>
+
       <p className="text-gray-600 dark:text-gray-400 text-sm">
         <span className="font-medium">Date:</span>{" "}
         {isEdit ? (
@@ -67,12 +68,13 @@ export default function WorkoutDetails({ workout, onDelete }) {
             name="date"
             value={formData.date}
             onChange={handleChange}
-            className="border p-1 rounded dark:bg-gray-700 dark:text-gray-300"
+            className="border p-1 rounded dark:bg-gray-700 dark:text-gray-300 w-full max-w-[10rem]"
           />
         ) : (
           new Intl.DateTimeFormat("en-GB").format(new Date(workout.date))
         )}
       </p>
+
       <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">
         <span className="font-medium">Duration:</span>{" "}
         {isEdit ? (
@@ -81,19 +83,20 @@ export default function WorkoutDetails({ workout, onDelete }) {
             name="duration"
             value={formData.duration}
             onChange={handleChange}
-            className="border p-1 rounded dark:bg-gray-700 dark:text-gray-300"
+            className="border p-1 rounded dark:bg-gray-700 dark:text-gray-300 w-full max-w-[9rem]"
           />
         ) : (
           `${workout.duration} min`
         )}
       </p>
+
       <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">
         <span className="font-medium">Workout Type:</span>{" "}
         {workout.workoutType
           .replace("-", " ")
           .replace(/\b\w/g, (char) => char.toUpperCase())}
       </p>
-      {/* Exercises List */}
+
       <div className="mt-6">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
           Exercises
@@ -114,8 +117,8 @@ export default function WorkoutDetails({ workout, onDelete }) {
           ))}
         </div>
       </div>
-      {/* Workout Stats */}
-      <div className="mt-6 grid grid-cols-2 gap-4">
+
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg border flex items-center gap-2">
           <Flame size={20} className="text-red-500 mr-2" />
           <div>
@@ -139,7 +142,7 @@ export default function WorkoutDetails({ workout, onDelete }) {
           </div>
         </div>
       </div>
-      {/* Notes */}
+
       <div className="mt-6">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 flex items-center">
           <Edit2 size={18} className="mr-2 text-gray-500 dark:text-gray-300" />
@@ -158,8 +161,9 @@ export default function WorkoutDetails({ workout, onDelete }) {
           </p>
         )}
       </div>
+
       {isEdit && (
-        <div className="mt-4 flex justify-center ">
+        <div className="mt-4 flex justify-center">
           <button
             onClick={handleSave}
             className="bg-gray-900 text-white px-4 py-2 rounded hover:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600"
